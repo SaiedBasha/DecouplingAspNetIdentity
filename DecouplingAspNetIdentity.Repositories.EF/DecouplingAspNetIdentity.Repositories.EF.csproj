@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E6C437BE-5936-48CB-9F2A-83AE540154FC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DecouplingAspNetIdentity.Repositories.EF</RootNamespace>
+    <AssemblyName>DecouplingAspNetIdentity.Repositories.EF</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Configuration\ClaimConfiguration.cs" />
+    <Compile Include="Configuration\ExternalLoginConfiguration.cs" />
+    <Compile Include="Configuration\RoleConfiguration.cs" />
+    <Compile Include="Configuration\UserConfiguration.cs" />
+    <Compile Include="DataContextFactory.cs" />
+    <Compile Include="EfUnitOfWork.cs" />
+    <Compile Include="EfUnitOfWorkFactory.cs" />
+    <Compile Include="Migrations\201711111508582_intial_models.cs" />
+    <Compile Include="Migrations\201711111508582_intial_models.Designer.cs">
+      <DependentUpon>201711111508582_intial_models.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271613424_some-updates.cs" />
+    <Compile Include="Migrations\201711271613424_some-updates.Designer.cs">
+      <DependentUpon>201711271613424_some-updates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ExternalLoginRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DecouplingAspNetIdentity.Infrastructure\DecouplingAspNetIdentity.Infrastructure.csproj">
+      <Project>{28DBB6A5-E87D-4FD0-9C7C-B94C0C2E0C40}</Project>
+      <Name>DecouplingAspNetIdentity.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DecouplingAspNetIdentity.Models\DecouplingAspNetIdentity.Models.csproj">
+      <Project>{ed808c46-d4de-4d92-b598-f6409300c3c7}</Project>
+      <Name>DecouplingAspNetIdentity.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DecouplingAspNetIdentity.Repositories\DecouplingAspNetIdentity.Repositories.csproj">
+      <Project>{a2aa6bd9-2480-405d-aaed-5f29d407ac3b}</Project>
+      <Name>DecouplingAspNetIdentity.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711111508582_intial_models.resx">
+      <DependentUpon>201711111508582_intial_models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271613424_some-updates.resx">
+      <DependentUpon>201711271613424_some-updates.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
